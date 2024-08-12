@@ -1,0 +1,268 @@
+.break-word {
+    word-break: break-all;
+}
+
+/*body {
+    background-image: url(https://pics.prcm.jp/9534c92f14ad1/85879189/png/85879189_220x220.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}*/
+
+button {
+    padding: 8px 15px;
+    height: 40px;
+    background-color: #007bff; 
+    color: #fff; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
+button:hover {
+    background-color: #0056b3; 
+}
+.inputbar {
+    text-align: center; 
+}
+input{
+    height: 40px;
+    width: 55%;
+}
+.dropdown {
+    display: inline-block;
+    top: -2.5px;
+}
+.title {
+    font-family: serif;
+    cursor: pointer; 
+    background-color: rgb(252, 233, 211);
+    margin-bottom: 20px;
+    padding-bottom: 0.1%;
+
+}
+@media (min-width: 576px) {
+    .col-sm-4 {
+        background-color: rgb(252, 233, 211);
+        margin-bottom: 20px;
+        padding-top: 10px;
+        text-align: right;
+    }
+}
+@media (min-width: 576px) {
+    .title_12 {
+        margin-right: 9.67%;
+    }
+    .menu{
+        padding-top: 6px;
+    }
+}
+@media (max-width: 576px) {
+    .col-12 {
+        margin-bottom: 20px;
+        text-align: right;
+    }
+}
+@media (max-width: 1500px) {
+    .menu {
+        font-size:100%;
+        padding-top: 10px;
+    }
+}
+@media (max-width: 1000px) {
+    .menu {
+        font-size: 80%;
+        padding-top: 10px;
+    }
+}
+@media (max-width: 800px) {
+    .menu {
+        font-size: 70%;
+        padding-top: 10px;
+    }
+}
+@media (max-width: 720px) {
+    .menu {
+        font-size: 60%;
+        padding-top: 10px;
+    }
+}
+@media (max-width: 650px) {
+    .menu {
+        font-size: 50%;
+        padding-top: 10px;
+    }
+}
+@media (max-width: 575.5px) {
+    .menu {
+        font-size: medium;
+    }
+}
+h2 {
+    font-weight: bold;
+    border-bottom: 3px solid #e3e3e3;
+    padding: 0.3em;
+    margin-bottom: 0.3em;
+    position: relative;
+  }
+h2::after {
+    content: '';
+    background-color: #4c9ac0;
+    width: 2em;
+    height: 3px;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    z-index: 1;
+  }
+.product{
+    font-size: medium;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+img {
+    background-color: #f4f4f4;
+}
+.container{
+    width: 75%;
+    height: 80%;
+    position: relative;
+}
+.container img{
+    width: 80%; 
+    aspect-ratio: 16/13;
+  }
+  a:hover {
+    background-color: rgb(225, 225, 225); 
+  }
+
+
+.icon{
+    font-size: x-large;
+}
+@media (max-width: 1500px) {
+    .box{
+        max-height: 175px; 
+        overflow: hidden;
+    }
+}
+@media (max-width: 1120px) {
+    .box{
+        max-height: 165px; 
+        overflow: hidden;
+    }
+}
+@media (max-width: 1070px) {
+    .box{
+        max-height: 150px; 
+        overflow: hidden;
+    }
+}
+@media (max-width: 1050px) {
+    .box{
+        max-height: 146.5px; 
+        overflow: hidden;
+    }
+}
+@media (max-width: 992px) {
+    .box{
+        max-height: 200px; 
+        overflow: hidden;
+    }
+}
+@media (max-width: 940px) {
+    .box{
+        max-height: 180px; 
+        overflow: hidden;
+    }
+}
+@media (max-width: 890px) {
+    .box{
+        max-height: 170px; 
+        overflow: hidden;
+    }
+}
+@media (max-width: 840px) {
+    .box{
+        max-height: 160px; 
+        overflow: hidden;
+    }
+}
+@media (max-width: 768px) {
+    .box{
+        max-height: 225px; 
+        overflow: hidden;
+    }
+}
+@media (max-width: 720px) {
+    .box{
+        max-height: 210px; 
+        overflow: hidden;
+    }
+}
+@media (max-width: 670px) {
+    .box{
+        max-height: 200px; 
+        overflow: hidden;
+    }
+}
+@media (max-width: 650px) {
+    .box{
+        max-height: 195px; 
+        overflow: hidden;
+    }
+}
+@media (max-width: 620px) {
+    .box{
+        max-height: 190px; 
+        overflow: hidden;
+    }
+}
+@media (max-width: 600px) {
+    .box{
+        max-height: 175px; 
+        overflow: hidden;
+    }
+}
+@media (max-width: 550px) {
+    .box{
+        max-height: 160px; 
+        overflow: hidden;
+    }
+}
+@media (max-width: 500px) {
+    .box{
+        max-height: 150px; 
+        overflow: hidden;
+    }
+}
+@media (max-width: 470px) {
+    .box{
+        max-height: 145px; 
+        overflow: hidden;
+    }
+}
+@media (max-width: 1165px) {
+    .price{
+        position: absolute;
+        top: 75%;
+        left: 14.8%;
+        font-size:120%;
+        background-color: rgba(20, 20, 20, 0.6);
+        color: white;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        padding-right: 3%;
+    }
+}
+@media (max-width: 550px) {
+    .price{
+        position: absolute;
+        top: 65%;
+        left: 14.8%;
+        font-size:120%;
+        background-color: rgba(20, 20, 20, 0.6);
+        color: white;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        padding-right: 3%;
+    }
+}

@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>マイページ ーSwiftCartー</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="../../static/app/css/mypage.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="icon" type="image/png" href="{% static 'app/icon/cart.svg' %}">
+    </head>
+    <body>
+        <header>
+            <div style = text-align:center;font-family:serif;cursor:pointer;background-color:rgb(252,233,211);margin-bottom:20px;padding-bottom:1px; >
+                <h1 class="bi bi-cart" id="backhome">SwiftCart</h1>
+            </div>
+        </header>
+        <div style="margin-right: 3.5%;">
+
+        <div class="row">
+            <div class="d-none d-md-block col-md-3" style="background-color: rgb(253, 253, 253); margin-top: -1.5%;"></div>
+            <div class="col-md-6 col-12">
+                <div style="text-align: center;">
+                    <img src="../../static/app/icon/kkrn_icon_user_13.png" height="150" width="150">
+                    <h1 style="margin-bottom: 1%;">{{user.user_name}}</h1>
+                    <p><h2 style="margin-bottom: 2%;">現在のポイント: ￥{{ user.points }}</h2></p>
+                    <a href="{% url 'charge' user.id %}"><h3 style="margin-bottom: 3%;">ポイントのチャージはこちらから</h3></a>
+                </div>
+            </div>
+            <div class="d-none d-md-block col-md-3" style="background-color: rgb(253, 253, 253); margin-top: -1.5%;"></div>
+        </div>
+
+            <h3 class="topline">いいねした商品</h3>
+            <div style="text-align: center;">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                {% if like_prod %}
+                    {% for prod in like_prod %}
+                    <p>{{ prod.product_name }}</p>
+                        <a href="{% url 'detail' user.id prod.id %}">
+                            <img src="{{ prod.image.url }}" height="150" width="175">
+                        </a><br>
+                    {% endfor %}
+                {% else %}
+                    <p>いいねした商品はありません</p>
+                {% endif %}
+                    </div>
+                </div>
+            </div>
+            <h3 class="topline">購入履歴</h3>
+            <div style="text-align: center;">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                {% if bought_prod %}
+                    {% for prod in bought_prod %}
+                    <p>{{ prod.product_name }}</p>
+                        <a href="{% url 'detail' user.id prod.id %}">
+                            <img src="{{ prod.image.url }}" height="150" width="175">
+                        </a><br>
+                    {% endfor %}
+                {% else %}
+                    <p>購入した商品はありません</p>
+                {% endif %}
+                    </div>
+                </div>
+            </div>
+            <h3 class="topline">出品履歴</h3>
+            <div style="text-align: center;">
+            <div class="row">
+                {% if sold_prod %}
+                    {% for prod in sold_prod %}
+                    <div class="col-lg-3 col-md-4 col-sm-5 col-6">
+                    <p>{{ prod.product_name }}</p>
+                        <a href="{% url 'detail' user.id prod.id %}">
+                            <img src="{{ prod.image.url }}" width = "75%"; height = "80%";>
+                        </a>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <p>出品した商品はありません</p>
+                {% endif %}
+            </div>
+            </div>
+        </div>
+        <h6 style="margin-top: 20px; font-family: serif;">&copy; 2023 -SwiftCart-</h6>
+            <ul>
+                <li><a href="https://www.iniad.org/">会社概要</a></li>
+                <li><a href="https://www.iniad.org/contact/">お問い合わせ</a></li>
+            </ul>
+        <script>
+            document.getElementById("backhome").addEventListener("click", function() {
+              window.location.href = "{% url 'home' user.id %}"; 
+            });
+        </script>
+    </body>
+</html>

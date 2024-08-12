@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ホームページ ーSwiftCartー</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="{% static 'app/css/home_foods.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="{% static 'app/icon/cart.svg' %}">
+</head>
+<body>
+    <header>
+        <div style="margin-left: 1.5%" >
+        <div style="margin-right: 1.5%;">
+        <div class="row">
+            <div class="col-sm-8 col-12 text-sm-right text-center title"><h1 class="bi bi-cart title_12" id="backhome" >SwiftCart</h1></div>
+            <div class="col-sm-4 col-12" >
+                <div class="menu">
+                <a href="{% url 'mypage' user.id %}">
+                    <i class="bi bi-person-circle icon" style="font-size: large;"></i>マイページ</a>
+                <a href="{% url 'sell' user.id %}"><i class="bi bi-coin icon" style="font-size: large;"></i>出品</a>
+                <a href="{% url 'notlogin' %}"><i class="bi bi-check icon" style="font-size: large;"></i>サインアウト</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1"></div>
+                <div class="col-10">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="inputbar">
+                            <input type="search" width="200%" placeholder=" 何をお探しですか？ " name="search">
+                            <button type="submit">検索</button>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary" type="button" data-toggle="dropdown">ソート</button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{% url 'home_Genre' 2 user.id %}?sort=posted_at">古い順</a>
+                                    <a class="dropdown-item" href="{% url 'home_Genre' 2 user.id %}?sort=-posted_at">新しい順</a>
+                                    <a class="dropdown-item" href="{% url 'home_Genre' 2 user.id %}?sort=price">値段（安い順）</a>
+                                    <a class="dropdown-item" href="{% url 'home_Genre' 2 user.id %}?sort=-price">値段（高い順）</a>
+                                    <a class="dropdown-item" href="{% url 'home_Genre' 2 user.id %}?sort=like">いいね数（少ない順）</a>
+                                    <a class="dropdown-item" href="{% url 'home_Genre' 2 user.id %}?sort=-like">いいね数（多い順）</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-1"></div>
+                </div>
+        </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="featured-products">
+                <div style="margin-left: 2.5%" >
+                <div style="margin-right: 2.5%;">
+                {% if search %}
+                    <h2 class="appendleft">検索結果</h2>
+                    <div class="flex-column" style="text-align: center; margin-bottom: -2%;">
+                        <div class="row">
+                            {% if results %}
+                                {% for prod in results %}
+                                    {% if prod.buyer_id == 0 %}
+                                        <div class="col-lg-3 col-md-4 col-sm-6 col-6" >
+                                            <div class="container">                                   
+                                            <a href="{% url 'detail' user.id prod.id %}" style="text-decoration:none; color:inherit;">
+                                                <img src="{{ prod.image.url }}" >
+                                            <p style="word-break: break-all;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; cursor: pointer;" class="product">{{ prod.product_name }}</p>
+                                            <p style="word-break: break-all;" class="product price">￥{{ prod.price }}</p>
+                                        </a>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                <p style="margin-left: 32px;">検索ワードと一致する商品はありません</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+                <h2 >衣類</h2>
+                <div class="flex-column" style="text-align: center; margin-bottom: -2%;">
+                    <div class="row">
+                        {% if products2 %}
+                        {% for prod in products2 %}
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                                <div class="container">                                   
+                                    <a href="{% url 'detail' user.id prod.id %} " style="text-decoration:none; color:inherit;">
+                                        <img src="{{ prod.image.url }}" >
+                                        <p style="word-break: break-all;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; cursor: pointer;" class="product">{{ prod.product_name }}</p>
+                                        <p style="word-break: break-all;" class="product price">￥{{ prod.price }}</p>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p style="margin-left: 32px;">出品されている商品はありません</p>
+                    {% endif %}
+                    </div>
+                </div>
+
+        </div>
+        </div>
+    </section>
+    </main>
+
+    <footer>
+        <h6 style="margin-top: 20px; font-family: serif;">&copy; 2023 -SwiftCart-</h6>
+        <ul>
+            <li><a href="https://www.iniad.org/">会社概要</a></li>
+            <li><a href="https://www.iniad.org/contact/">お問い合わせ</a></li>
+        </ul>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script>
+        document.getElementById("backhome").addEventListener("click", function() {
+          window.location.href = "{% url 'home' user.id %}"; 
+    });
+    </script>
+</body>
+</html>

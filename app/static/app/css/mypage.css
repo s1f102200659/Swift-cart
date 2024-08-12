@@ -1,0 +1,23 @@
+.topline {
+    font-weight: bold;
+    border-top: 3px solid #e3e3e3;
+    padding: 0.3em;
+    margin-top: 0.3em;
+    margin-left: 16px;
+    position: relative;
+}
+
+.topline::after {
+    content: '';
+    background-color: #4c9ac0;
+    width: 2em;
+    height: 3px;
+    position: absolute;
+    top: -3px;
+    left: 0;
+    z-index: 1;
+}
+
+.appendleft {
+    margin-left: 16px;
+}

@@ -1,0 +1,18 @@
+.appendleft{
+    margin-left: 24px;
+}
+
+h2{
+    text-align: center;
+    font-family: serif;
+    cursor: pointer; 
+    font-size: 100000px;
+}
+
+.title {
+    font-family: serif;
+    cursor: pointer; 
+    background-color: rgb(252, 233, 211);
+    margin-bottom: 20px;
+
+}
